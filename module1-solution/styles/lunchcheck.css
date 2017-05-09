@@ -1,0 +1,12 @@
+.red-font{
+    color: #FF0000;
+}
+.green-font{
+    color: #008000;
+}
+.valid-error{
+    box-shadow: 0 0 3px #FF0000;
+}
+.valid-success{
+    box-shadow: 0 0 3px	#008000;
+}
