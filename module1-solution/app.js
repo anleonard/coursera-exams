@@ -13,13 +13,16 @@ angular.module('LunchCheck', [])
         var numElementi = 0;
         var $listaElementi = $scope.lista;
 
+        //check valid listaElementi
         if($listaElementi !=null && $listaElementi.length>0){
 
           $scope.arrayElementi = [];
+          //ist of elements
           var splitLista = $listaElementi.split(',');
 
+          //consider only valid item
           angular.forEach(splitLista, function(value, key) {
-            if(value.length>0) $scope.arrayElementi.push(value);
+            if(value.trim().length>0) $scope.arrayElementi.push(value);
           });
 
           numElementi = $scope.arrayElementi.length;
@@ -31,7 +34,7 @@ angular.module('LunchCheck', [])
         else{
           $scope.messageStyle ="green-font";
           $scope.inputStyle = "valid-success";
-          if(numElementi<=3) $scope.messaggio = "Enjoy";
+          if(numElementi<=3) $scope.messaggio = "Enjoy!";
           else $scope.messaggio = "TooMuch!";
         }
     };
