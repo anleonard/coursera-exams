@@ -1,11 +1,29 @@
 <!DOCTYPE html>
-<html ng-app='ShoppingListApp'>
+<html lang="en" ng-app='ShoppingListApp'>
   <head>
+    <title>Shopping List Check Off</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
-    <style> body { font-size: 1.2em; }</style>
-    <title>Custom Service</title>
+    <style>
+     .emptyMessage {
+       font-weight: bold;
+       color: red;
+       font-size: 1.2em;
+     }
+     li {
+       margin-bottom: 7px;
+       font-size: 1.2em;
+     }
+     li > button {
+       margin-left: 6px;
+     }
+     button > span {
+       color: green;
+     }
+   </style>
   </head>
   <body>
     <div class="container">
@@ -14,25 +32,26 @@
            <!-- To Buy List -->
           <div class="col-md-6" ng-controller="ToBuyController as ToBuyCrt">
             <h2>To Buy:</h2>
-            <ul ng-show="ToBuyCrt.items.size>0">
+            <ul ng-hide="!ToBuyCrt.items.length">
               <li ng-repeat="item in ToBuyCrt.items">
-                  {{item.name}} {{item.quantity}}
-                  <button class="btn btn-default" ng-click="ToBuyCrt.addItem(item.name, item.quantity);">
+                  Buy {{item.name}} {{item.quantity}}
+                  <button class="btn btn-default" ng-click="ToBuyCrt.addItem(item.name, item.quantity, $index);">
                   <span class="glyphicon glyphicon-ok"></span> Bought</button>
               </li>
             </ul>
-            <div class="emptyMessage" ng-show="ToBuyCrt.items.size==0">Everything is bought!</div>
+            <div class="emptyMessage" ng-if="!ToBuyCrt.items.length">Everything is bought!</div>
           </div>
 
           <!-- Already Bought List -->
           <div class="col-md-6" ng-controller="AlreadyBoughtController as AlreadyBoughtCrt">
             <h2>Already Bought:</h2>
-            <ul ng-show="AlreadyBoughtCrt.boughtItems.size>0">
+            <ul ng-hide="!AlreadyBoughtCrt.boughtItems.length">
               <li ng-repeat="boughtItem in AlreadyBoughtCrt.boughtItems">
-                  {{boughtItem.name}} {{boughtItem.quantity}}
+                  Bought {{boughtItem.quantity}} {{boughtItem.name}}
             </ul>
-            <div class="emptyMessage" ng-show="AlreadyBoughtCrt.boughtItems.size==0">Nothing bought yet.</div>
+            <div class="emptyMessage" ng-if="!AlreadyBoughtCrt.boughtItems.length">Nothing bought yet.</div>
           </div>
-      </div>
+       </div>
+    </div>
   </body>
 </html>
