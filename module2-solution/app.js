@@ -34,7 +34,7 @@ function ShoppingListCheckOff() {
     { name: "Biscuits", quantity: "20" },
     { name: "Cookies", quantity: "32" },
     { name: "Chocolate", quantity: "5" },
-    { name: "Bread", quantity: "8" }
+    { name: "Peppermints", quantity: "8" }
   ];
 
   service.addItem = function (itemName, quantity) {
